@@ -9,41 +9,10 @@
 	<noscript>
 		<link rel="stylesheet" href="/public/css/noscript.css" />
 	</noscript>
+	<link rel="stylesheet" href="/public/css/style.css" />
 	<style>
-		body {
-			background-color: rgb(2, 68, 68);
-		}
-
-		h1 {
-			color: white;
-		}
-
-		p {
-			color: white;
-			font-size: 25px;
-		}
-
-		.inner {
-			margin-top: 0px;
-			text-align: center;
-		}
-
-		.title {
-			color: rgb(107, 121, 245)
-		}
-
-		.form-filter{
-			text-align: center;
-			background-color: rgb(2, 68, 68);
-			color: white;
-		}
-		input{
-			text-align: center;
-			font-size: 30px;
-			font-weight: 700;
-		}
-		li{
-			font-size: 20px;
+		.fa-upload{
+			margin-bottom: 35px;
 		}
 	</style>
 </head>
@@ -51,11 +20,10 @@
 <body class="is-preload">
 	<!-- Wrapper -->
 	<div id="wrapper">
-
+		
 		<!-- Header -->
 		<header id="header">
 			<div class="inner">
-
 				<!-- Logo -->
 				<a href="#" class="logo">
 					<span class="symbol"><img src="/public/images/logo.svg" alt="" /></span>
@@ -69,15 +37,16 @@
 			<div class="inner">
 				<header>
 					<h1>Welcome to the Trivia .</h1>
+					<a href="/addQuestion" class="button primary icon solid fa-upload">Ask Your Question</a>
 					<p>Here you can improve your trivia knowledge on your favourite topics, and also can ask questions.
 					</p>
-					
 				</header>
 				<section class="form-filter">
 					<form method="post" action="#">
 						<div class="gtr-uniform">
 							<div class="col-6">
-								<input type="text" name="demo-name" id="demo-name" value="" placeholder="Filter Your Favourite TOPIC" />
+								<input type="text" name="demo-name" id="demo-name" value=""
+									placeholder="Filter Your Favourite TOPIC" />
 							</div>
 						</div>
 					</form>
@@ -257,7 +226,8 @@
 				</section>
 				<ul class="copyright">
 					<li>&copy; Spark Your Mind. All rights reserved</li>
-					<li>Design and Developed: <a href="https://powerfist01.web.app">Sujeet Singh</a></li>
+					<li>Designed and Developed: <a href="https://powerfist01.web.app" target="_blank">&nbsp;Sujeet
+							Singh</a></li>
 				</ul>
 			</div>
 		</footer>

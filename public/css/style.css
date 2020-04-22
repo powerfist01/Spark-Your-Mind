@@ -1,0 +1,42 @@
+body {
+    background-color: rgb(2, 68, 68);
+}
+
+h1 {
+    color: white;
+}
+
+p {
+    color: white;
+    font-size: 25px;
+}
+
+.inner {
+    margin-top: 0px;
+    text-align: center;
+}
+
+.title {
+    color: rgb(107, 121, 245)
+}
+
+.form-filter{
+    text-align: center;
+    background-color: rgb(2, 68, 68);
+    color: white;
+}
+input{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+}
+textarea{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+}
+li{
+    font-size: 20px;
+}

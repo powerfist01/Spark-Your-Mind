@@ -1,0 +1,15 @@
+{
+  "name": "spark-your-mind",
+  "version": "1.0.0",
+  "description": "\"A Trivia website using Node.JS and MongoDB\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "powerfist01",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.0.2",
+    "express": "^4.17.1"
+  }
+}

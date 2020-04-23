@@ -32,8 +32,28 @@ app.set('views', path.join(__dirname, 'views'))
 app.use('/public', express.static(__dirname + '/public'))
 
 
-app.get('/', function (req, res) {
-    res.render('index')
+app.get('/',async function (req, res) {
+    let data = await new Promise(function(resolve,reject){
+        qModel.find(function(err,doc){
+            if(err)
+                console.log('Error in connecting to database!');
+            else
+                resolve(doc);
+        })
+    })
+
+    let tags = data.map(function(document){
+        return document.tag;
+    })
+    console.log(tags.length);
+    let styles = [];
+    let pics = [];
+    for(let i=0;i<tags.length;i++){
+        styles[i] = 'style' + (Math.round(Math.random()*100)%5 + 1)
+        pics[i] = 'pic0' + (Math.round(Math.random()*100)%9 + 1)
+    }
+    console.log(styles,pics);
+    res.render('index', {tags:tags},{styles:styles});
 })
 app.get('/addQuestion', function (req, res) {
     res.render('addquestion')

@@ -27,16 +27,17 @@ p {
 }
 input{
     text-align: center;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 700;
     color: white;
 }
 textarea{
     text-align: center;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 700;
     color: white;
 }
 li{
     font-size: 20px;
+    font-weight: 600;
 }

@@ -20,7 +20,7 @@
         <header id="header">
             <div class="inner">
                 <!-- Logo -->
-                <a href="#" class="logo">
+                <a href="/" class="logo">
                     <span class="symbol"><img src="/public/images/logo.svg" alt="" /></span>
                     <span class="title">Spark Your Mind</span>
                 </a>
@@ -36,17 +36,19 @@
             </div>
 
             <section>
-                <form method="post" action="#">
+                <form method="POST" action="/addQuestion">
                     <div class="row gtr-uniform">
-                        <div class="col-2"></div>
+                        <div class="col-2">
+                            <input type="text" name="tag" id="tag" value="" placeholder="Tag" />
+                        </div>
                         <div class="col-8">
-                            <textarea name="demo-message" id="demo-message" placeholder="Enter your Question"
+                            <textarea name="question" id="question" placeholder="Enter your Question"
                                 rows="6"></textarea>
                         </div>
                         <div class="col-2"></div>
                         <div class="col-2"></div>
                         <div class="col-8">
-                            <textarea name="demo-message" id="demo-message" placeholder="Enter your Answer"
+                            <textarea name="answer" id="answer" placeholder="Enter your Answer"
                                 rows="6"></textarea>
                         </div>
                         <div class="col-2"></div>

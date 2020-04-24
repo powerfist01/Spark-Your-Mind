@@ -50,11 +50,13 @@ app.get('/',async function (req, res) {
     let pics = [];
     for(let i=0;i<tags.length;i++){
         styles[i] = 'style' + (Math.round(Math.random()*100)%5 + 1)
-        pics[i] = 'pic0' + (Math.round(Math.random()*100)%9 + 1)
+        pics[i] = 'pic0' + (Math.round(Math.random()*100)%9 + 1) + '.jpg'
     }
     console.log(styles,pics);
-    res.render('index', {tags:tags},{styles:styles});
+    res.render('index', {tags:tags,styles:styles,pics:pics});
 })
+
+
 app.get('/addQuestion', function (req, res) {
     res.render('addquestion')
 })

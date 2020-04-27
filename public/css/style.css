@@ -37,7 +37,21 @@ textarea{
     font-weight: 700;
     color: white;
 }
+select{
+    text-align: center;
+    font-size: 25px;
+    font-weight: 700;
+    color: white;
+}
 li{
     font-size: 20px;
     font-weight: 600;
+    text-align: center;
+}
+ul{
+    text-align: center;
+}
+
+.forC{
+    text-align: center;
 }

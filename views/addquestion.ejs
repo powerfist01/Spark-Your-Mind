@@ -40,33 +40,44 @@
                     <div class="row gtr-uniform">
                         <div class="col-5"></div>
                         <div class="col-2">
-                            <textarea name="tag" id="tag" placeholder="TAG"
-                                rows="6" required></textarea>
+                            <textarea name="tag" id="tag" placeholder="TAG" rows="6" required></textarea>
                         </div>
                         <div class="col-5"></div>
                         <div class="col-2"></div>
                         <div class="col-8">
-                            <textarea name="question" id="question" placeholder="Enter your Question"
-                                rows="6" required></textarea>
+                            <textarea name="question" id="question" placeholder="Enter your Question" rows="6"
+                                required></textarea>
                         </div>
                         <div class="col-2"></div>
+
                         <div class="col-2"></div>
-                        <div class="col-8">
-                            <textarea name="answer" id="answer" placeholder="Enter your Answer"
-                                rows="6" required></textarea>
+                        <div class="col-4">
+                            <textarea name="optionA" id="optionA" placeholder="Correct Option Here" rows="6" required></textarea>
+                        </div>
+                        <div class="col-4">
+                            <textarea name="optionB" id="optionB" placeholder="Option B" rows="6" required></textarea>
                         </div>
                         <div class="col-2"></div>
-                        <div class="col-12 hello">
+
+                        <div class="col-2"></div>
+                        <div class="col-4">
+                            <textarea name="optionc" id="optionC" placeholder="Option C" rows="6" required></textarea>
+                        </div>
+                        <div class="col-4">
+                            <textarea name="optionD" id="optionD" placeholder="Option D" rows="6" required></textarea>
+                        </div>
+                        <div class="col-2"></div>
+
+                        <div class="col-5"></div>
+                        <div>
                             <ul class="actions">
-                                <li><input type="submit" value="Add question" class="primary" style="margin-left: 770px;"/></li>
+                                <li><input type="submit" value="Add question" class="primary" /></li>
                                 <li><input type="reset" value="Reset" /></li>
                             </ul>
                         </div>
                     </div>
                 </form>
             </section>
-
-
         </div>
     </div>
 
@@ -76,6 +87,21 @@
     <script src="/public/js/breakpoints.min.js"></script>
     <script src="/public/js/util.js"></script>
     <script src="/public/js/main.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#demo-category').click(function () {
+                let optionA = $('#optionA').val();
+                let optionB = $('#optionB').val();
+                let optionC = $('#optionC').val();
+                let optionD = $('#optionD').val();
+
+                $('select').append('<option value="1">'+ optionA +'</option>');
+                $('select').append('<option value="1">'+ optionB +'</option>');
+                $('select').append('<option value="1">'+ optionC +'</option>');
+                $('select').append('<option value="1">'+ optionD +'</option>');
+            })
+        })
+    </script>
 
 </body>
 

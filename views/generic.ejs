@@ -10,11 +10,6 @@
 		<link rel="stylesheet" href="/public/css/noscript.css" />
 	</noscript>
 	<link rel="stylesheet" href="/public/css/style.css" />
-	<style>
-		.fa-upload {
-			margin-bottom: 35px;
-		}
-	</style>
 </head>
 
 <body class="is-preload">
@@ -26,53 +21,28 @@
 			<div class="inner">
 				<!-- Logo -->
 				<a href="/" class="logo">
-					<span class="symbol"><img src="/public/images/logo.svg" alt="" /></span>
-					<span class="title">Spark Your Mind</span>
+					<span class="symbol"><img src="/public/images/logo.svg" alt="" /></span><span class="title">Spark Your Mind</span>
 				</a>
+
 			</div>
 		</header>
 
 		<!-- Main -->
 		<div id="main">
 			<div class="inner">
-				<header>
-					<h1>Welcome to the Trivia .</h1>
-					<a href="/addQuestion" class="button primary icon solid fa-upload">Ask Your Question</a>
-					<p>Here you can improve your trivia knowledge on your favourite topics, and also can ask questions.
-					</p>
-				</header>
-
-				<section class="form-filter">
-					<form method="post" action="#">
-						<div class="gtr-uniform">
-							<div class="col-6">
-								<input type="text" name="demo-name" id="demo-name" value=""
-									placeholder="Filter Your Favourite TOPIC" />
-							</div>
-						</div>
-					</form>
-				</section>
-
-				<section class="tiles">
-
-					<% for(var i=0; i < tags.length; i++) { %>
-					<article class='<%= styles[i] %>'>
-						<span class="image">
-							<img src="/public/images/<%= pics[i]%>" />
-						</span>
-						<a href="/generic/<%= tags[i] %>">
-							<h2><%= tags[i] %></h2>
-							<!-- <div class="content">
-									<p>Hey</p>
-								</div> -->
-						</a>
-					</article>
-					<% }
-					%>
-				</section>
+				<h1><%= tag %> </h1>
+				
+				<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque
+					venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor
+					sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu
+					massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris.
+					Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis,
+					hendrerit tristique.</p>
+				
 			</div>
 		</div>
 
+		<!-- Footer -->
 		<!-- Footer -->
 		<footer id="footer" style="padding-bottom: 20px; padding-top: 50px;">
 			<div class="inner">

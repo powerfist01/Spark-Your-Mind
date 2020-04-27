@@ -23,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 var Schema = mongoose.Schema;
 const question = new Schema({
     tag: String,
+    content: String,
     questions: Array
 });
 var qModel = mongoose.model('Question', question);
@@ -45,17 +46,32 @@ app.get('/',async function (req, res) {
     let tags = data.map(function(document){
         return document.tag;
     })
-    console.log(tags.length);
     let styles = [];
     let pics = [];
     for(let i=0;i<tags.length;i++){
         styles[i] = 'style' + (Math.round(Math.random()*100)%5 + 1)
         pics[i] = 'pic0' + (Math.round(Math.random()*100)%9 + 1) + '.jpg'
     }
-    console.log(styles,pics);
     res.render('index', {tags:tags,styles:styles,pics:pics});
 })
 
+app.get('/generic/:tag',async function(req,res){
+    let tag = req.params.tag;
+    let data = await new Promise(function(resolve,reject){
+        qModel.find({tag: tag},function(err,document){
+            if(err)
+                console.log('Error in Getting data');
+            resolve(document);
+        })
+    })
+
+    console.log(data);
+    let requiredData = data.map(function(doc){
+        let obj = {};
+        
+    })
+    res.render('generic',{tag:tag});
+})
 
 app.get('/addQuestion', function (req, res) {
     res.render('addquestion')
@@ -65,7 +81,11 @@ app.post('/addQuestion', function (req, res) {
     var tag = req.body.tag;
     var ques = {
         question: req.body.question,
-        answer: req.body.answer
+        answer: req.body.optionA,
+        optionA: req.body.optionA,
+        optionB: req.body.optionB,
+        optionC: req.body.optionC,
+        optionD: req.body.optionD
     }
     qModel.find({ tag: tag }, function (err, doc) {
         if (err)

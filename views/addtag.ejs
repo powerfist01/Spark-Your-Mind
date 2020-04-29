@@ -38,35 +38,28 @@
             <section style="padding-top: 20px;">
                 <form method="POST" action="/addtag">
                     <div class="row gtr-uniform">
-                        <div class="col-2"></div>
-                        <div class="col-8">
-                            <textarea name="question" id="question" placeholder="Enter your Question" rows="6"
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                            <textarea name="tag" id="tag" placeholder="TAG" rows="6" required></textarea>
+                        </div>
+                        <div class="col-4"></div>
+                        <div class="col-2 cont" style="display: none;">
+
+                        </div>
+                        <div class="col-8 cont" style="display: none;">
+
+                            <textarea name="content" id="content" placeholder="Basic Info About the Topic" rows="6"
                                 required></textarea>
                         </div>
-                        <div class="col-2"></div>
-
-                        <div class="col-2"></div>
-                        <div class="col-4">
-                            <textarea name="optionA" id="optionA" placeholder="Correct Option Here" rows="6" required></textarea>
+                        <div class="col-2 cont" style="display: none;">
+                            
                         </div>
-                        <div class="col-4">
-                            <textarea name="optionB" id="optionB" placeholder="Option B" rows="6" required></textarea>
-                        </div>
-                        <div class="col-2"></div>
-
-                        <div class="col-2"></div>
-                        <div class="col-4">
-                            <textarea name="optionc" id="optionC" placeholder="Option C" rows="6" required></textarea>
-                        </div>
-                        <div class="col-4">
-                            <textarea name="optionD" id="optionD" placeholder="Option D" rows="6" required></textarea>
-                        </div>
-                        <div class="col-2"></div>
-
                         <div class="col-5"></div>
                         <div>
                             <ul class="actions">
-                                <li><input type="submit" value="Add question" class="primary" /></li>
+                                <li><input id="submit" type="submit" value="Add TAG" class="primary" /></li>
+                                <li><input id="button" type="submit" value="Click Here" class="primary"
+                                        style="display: none;" /></li>
                                 <li><input type="reset" value="Reset" /></li>
                             </ul>
                         </div>
@@ -84,20 +77,13 @@
     <script src="/public/js/main.js"></script>
     <script>
         $(document).ready(function () {
-            $('#demo-category').click(function () {
-                let optionA = $('#optionA').val();
-                let optionB = $('#optionB').val();
-                let optionC = $('#optionC').val();
-                let optionD = $('#optionD').val();
-
-                $('select').append('<option value="1">'+ optionA +'</option>');
-                $('select').append('<option value="1">'+ optionB +'</option>');
-                $('select').append('<option value="1">'+ optionC +'</option>');
-                $('select').append('<option value="1">'+ optionD +'</option>');
-            })
+            // $('#submit').click(function () {
+            //     $('.cont').show();
+            //     $(this).hide();
+            //     $('#button').show();
+            // })
         })
     </script>
-
 </body>
 
 </html>

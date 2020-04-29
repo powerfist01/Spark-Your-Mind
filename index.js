@@ -76,6 +76,21 @@ app.get('/generic/:tag',async function(req,res){
 app.get('/addQuestion', function (req, res) {
     res.render('addquestion')
 })
+app.get('/addtag', function (req, res) {
+    res.render('addtag')
+})
+app.post('/addtag', function (req, res) {
+    let tag = req.body.tag;
+    console.log(tag)
+    qModel.find({tag:tag},function(err,document){
+        if(err)
+            console.log('Error Found!!');
+        console.log(document);
+    })
+    res.render('addquestion');
+})
+
+
 app.post('/addQuestion', function (req, res) {
     console.log(req.body);
     var tag = req.body.tag;

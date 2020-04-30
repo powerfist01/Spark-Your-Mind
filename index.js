@@ -46,13 +46,16 @@ app.get('/',async function (req, res) {
     let tags = data.map(function(document){
         return document.tag;
     })
+    let content = data.map(function(document){
+        return document.content;
+    })
     let styles = [];
     let pics = [];
     for(let i=0;i<tags.length;i++){
         styles[i] = 'style' + (Math.round(Math.random()*100)%5 + 1)
         pics[i] = 'pic0' + (Math.round(Math.random()*100)%9 + 1) + '.jpg'
     }
-    res.render('index', {tags:tags,styles:styles,pics:pics});
+    res.render('index', {tags:tags,styles:styles,pics:pics,content:content});
 })
 
 app.get('/generic/:tag',async function(req,res){
@@ -77,15 +80,32 @@ app.get('/addQuestion', function (req, res) {
     res.render('addquestion')
 })
 app.get('/addtag', function (req, res) {
+    console.log('get addtag')
     res.render('addtag')
 })
+
 app.post('/addtag', function (req, res) {
+    console.log('post addtag')
     let tag = req.body.tag;
-    console.log(tag)
+    console.log(tag);
+    let content = req.body.content;
     qModel.find({tag:tag},function(err,document){
         if(err)
             console.log('Error Found!!');
-        console.log(document);
+        if(!document){
+            let data = new qModel({
+                tag : tag,
+                content: content
+            })
+            data.save(function(err){
+                if(err)
+                    console.log(err);
+                else    
+                    console.log('Saved TAG');
+            })
+        } else {
+            qModel.updateOne({tag:tag},{content:content});
+        }
     })
     res.render('addquestion');
 })

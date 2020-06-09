@@ -80,12 +80,10 @@ app.get('/addQuestion', function (req, res) {
     res.render('addquestion')
 })
 app.get('/addtag', function (req, res) {
-    console.log('get addtag')
     res.render('addtag')
 })
 
 app.post('/addtag', function (req, res) {
-    console.log('post addtag')
     let tag = req.body.tag;
     console.log(tag);
     let content = req.body.content;

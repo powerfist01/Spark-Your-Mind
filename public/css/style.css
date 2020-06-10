@@ -46,8 +46,10 @@ select{
     color: white;
 }
 li{
+    text-decoration: none;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 500;
+    color: black;
     text-align: center;
 }
 ul{
@@ -63,4 +65,16 @@ ul{
     text-align: center;
     align-self: center;
     align-content: center;
+}
+
+span {
+    content: "\1F493";
+}
+
+a{
+    text-decoration: none;
+}
+
+.fa-upload {
+    margin-bottom: 35px;
 }

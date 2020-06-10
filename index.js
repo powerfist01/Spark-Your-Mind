@@ -69,11 +69,7 @@ app.get('/generic/:tag',async function(req,res){
     })
 
     console.log(data);
-    let requiredData = data.map(function(doc){
-        let obj = {};
-        
-    })
-    res.render('generic',{tag:tag});
+    res.render('generic',{tag:tag, data: data});
 })
 
 app.get('/elements', function (req, res) {

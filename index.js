@@ -76,49 +76,18 @@ app.get('/generic/:tag',async function(req,res){
     res.render('generic',{tag:tag});
 })
 
-app.get('/addQuestion', function (req, res) {
-    res.render('addquestion')
+app.get('/elements', function (req, res) {
+    res.render('elements.ejs')
 })
-app.get('/addtag', function (req, res) {
-    res.render('addtag')
+app.get('/addQ',function(req,res){
+    res.render('addQ.ejs');
 })
-
-app.post('/addtag', function (req, res) {
-    let tag = req.body.tag;
-    console.log(tag);
-    let content = req.body.content;
-    qModel.find({tag:tag},function(err,document){
-        if(err)
-            console.log('Error Found!!');
-        if(!document){
-            let data = new qModel({
-                tag : tag,
-                content: content
-            })
-            data.save(function(err){
-                if(err)
-                    console.log(err);
-                else    
-                    console.log('Saved TAG');
-            })
-        } else {
-            qModel.updateOne({tag:tag},{content:content});
-        }
-    })
-    res.render('addquestion');
-})
-
-
 app.post('/addQuestion', function (req, res) {
     console.log(req.body);
     var tag = req.body.tag;
     var ques = {
         question: req.body.question,
-        answer: req.body.optionA,
-        optionA: req.body.optionA,
-        optionB: req.body.optionB,
-        optionC: req.body.optionC,
-        optionD: req.body.optionD
+        answer: req.body.answer
     }
     qModel.find({ tag: tag }, function (err, doc) {
         if (err)

@@ -36,20 +36,29 @@
             </div>
 
             <section style="padding-top: 20px;">
-                <form method="POST" action="/addtag">
+                <form method="POST" action="/addQ">
                     <div class="row gtr-uniform">
-                        <div class="row">
-                            <div class="col-2"></div>
+                        <div class="col-2"></div>
                         <div class="col-8">
-                            <textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
+                            <textarea name="question" placeholder="Question"
+                                rows="6" required></textarea>
                         </div>
                         <div class="col-2"></div>
+
+                        <div class="col-2"></div>
+                        <div class="col-8">
+                            <textarea name="question" placeholder="Answer"
+                                rows="6" required></textarea>
                         </div>
-                        <div>
+                        <div class="col-2"></div>
+                        <div class="col-2"></div>
+                        <div class="newC">
                             <ul class="actions">
-                                <li><input type="submit" value="Submit" class="primary" /></li>
+                                <li><input type="submit" value="Save Question" class="primary" /></li>
+                                <li><input type="reset" value="Reset" /></li>
                             </ul>
                         </div>
+                        
                     </div>
                 </form>
             </section>

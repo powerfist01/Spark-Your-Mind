@@ -37,6 +37,8 @@ textarea{
     font-weight: 700;
     color: white;
 }
+
+
 select{
     text-align: center;
     font-size: 25px;
@@ -54,4 +56,11 @@ ul{
 
 .forC{
     text-align: center;
+}
+
+.newC{
+    justify-content: center;
+    text-align: center;
+    align-self: center;
+    align-content: center;
 }

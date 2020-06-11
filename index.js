@@ -10,10 +10,10 @@ mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://powerfist01:love4you@ds219095.mlab.com:19095/trivia', { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 db.once('open', function () {
-    console.log('Connected to database!');
+    console.log('Database Connected!!!');
 })
 db.on('error', function (err) {
-    console.log('Error to connect to database!!')
+    console.log('Databse not Connected!!');
     throw err;
 });
 
@@ -29,15 +29,15 @@ const question = new Schema({
 var qModel = mongoose.model('Question', question);
 
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'))
-app.use('/public', express.static(__dirname + '/public'))
+app.set('views', path.join(__dirname, 'views'));
+app.use('/public', express.static(__dirname + '/public'));
 
 
 app.get('/',async function (req, res) {
     let data = await new Promise(function(resolve,reject){
         qModel.find(function(err,doc){
             if(err)
-                console.log('Error in connecting to database!');
+                console.log('Oops..Cannot connect to database');
             else
                 resolve(doc);
         })
@@ -67,7 +67,6 @@ app.get('/generic/:tag',async function(req,res){
             resolve(document);
         })
     })
-
     console.log(data);
     res.render('generic',{tag:tag, data: data});
 })
@@ -78,36 +77,37 @@ app.get('/elements', function (req, res) {
 app.get('/addQ',function(req,res){
     res.render('addQ.ejs');
 })
-app.post('/addQuestion', function (req, res) {
-    console.log(req.body);
-    var tag = req.body.tag;
-    var ques = {
-        question: req.body.question,
-        answer: req.body.answer
-    }
-    qModel.find({ tag: tag }, function (err, doc) {
-        if (err)
-            console.log('Error in getting the document');
 
-        if (doc.length) {
-            qModel.updateOne({ tag: tag }, { $push: { questions: ques } },function(err){
-                if(err)
-                    throw err;
-                console.log('Saved in array!')
-            });
-        } else {
-            var data = new qModel({
-                tag: tag,
-                questions: [ques]
-            })
-            data.save(function (err) {
-                if (err)
-                    console.log('Error in saving!')
-                console.log('Question saved!');
-            })
-        }
-    })
-    res.render('addquestion')
+app.post('/addQ', function (req, res) {
+    console.log(req.body);
+    // var tag = req.body.tag;
+    // var ques = {
+    //     question: req.body.question,
+    //     answer: req.body.answer
+    // }
+    // qModel.find({ tag: tag }, function (err, doc) {
+    //     if (err)
+    //         console.log('Error in getting the document');
+
+    //     if (doc.length) {
+    //         qModel.updateOne({ tag: tag }, { $push: { questions: ques } },function(err){
+    //             if(err)
+    //                 throw err;
+    //             console.log('Question Saved!')
+    //         });
+    //     } else {
+    //         var data = new qModel({
+    //             tag: tag,
+    //             questions: [ques]
+    //         })
+    //         data.save(function (err) {
+    //             if (err)
+    //                 console.log('Error in saving!')
+    //             console.log('Question saved!');
+    //         })
+    //     }
+    // })
+    res.render('addQ')
 })
 
 app.listen(3000, function (err) {

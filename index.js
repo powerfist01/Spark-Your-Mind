@@ -32,7 +32,6 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use('/public', express.static(__dirname + '/public'));
 
-
 app.get('/',async function (req, res) {
     let data = await new Promise(function(resolve,reject){
         qModel.find(function(err,doc){
@@ -42,20 +41,18 @@ app.get('/',async function (req, res) {
                 resolve(doc);
         })
     })
-
+    //console.log(data);
     let tags = data.map(function(document){
         return document.tag;
     })
-    let content = data.map(function(document){
-        return document.content;
-    })
+
     let styles = [];
     let pics = [];
     for(let i=0;i<tags.length;i++){
         styles[i] = 'style' + (Math.round(Math.random()*100)%5 + 1)
         pics[i] = 'pic0' + (Math.round(Math.random()*100)%9 + 1) + '.jpg'
     }
-    res.render('index', {tags:tags,styles:styles,pics:pics,content:content});
+    res.render('index', {tags:tags,styles:styles,pics:pics});
 })
 
 app.get('/generic/:tag',async function(req,res){
@@ -74,40 +71,50 @@ app.get('/generic/:tag',async function(req,res){
 app.get('/elements', function (req, res) {
     res.render('elements.ejs')
 })
-app.get('/addQ',function(req,res){
-    res.render('addQ.ejs');
+app.get('/addQ',async function(req,res){
+    let data = await new Promise(function(resolve,reject){
+        qModel.find({},{tag:1},function(err,doc){
+            if(err)
+                console.log('Oops..Cannot connect to database');
+            else
+                resolve(doc);
+        })
+    })
+    console.log(data);
+
+    res.render('addQ.ejs',{tags:data});
 })
 
 app.post('/addQ', function (req, res) {
     console.log(req.body);
-    // var tag = req.body.tag;
-    // var ques = {
-    //     question: req.body.question,
-    //     answer: req.body.answer
-    // }
-    // qModel.find({ tag: tag }, function (err, doc) {
-    //     if (err)
-    //         console.log('Error in getting the document');
+    var tag = req.body.tag;
+    var ques = {
+        question: req.body.question,
+        answer: req.body.answer
+    }
+    qModel.find({ tag: tag }, function (err, doc) {
+        if (err)
+            console.log('Error in getting the document');
 
-    //     if (doc.length) {
-    //         qModel.updateOne({ tag: tag }, { $push: { questions: ques } },function(err){
-    //             if(err)
-    //                 throw err;
-    //             console.log('Question Saved!')
-    //         });
-    //     } else {
-    //         var data = new qModel({
-    //             tag: tag,
-    //             questions: [ques]
-    //         })
-    //         data.save(function (err) {
-    //             if (err)
-    //                 console.log('Error in saving!')
-    //             console.log('Question saved!');
-    //         })
-    //     }
-    // })
-    res.render('addQ')
+        if (doc.length) {
+            qModel.updateOne({ tag: tag }, { $push: { questions: ques } },function(err){
+                if(err)
+                    throw err;
+                console.log('Question Saved!')
+            });
+        } else {
+            var data = new qModel({
+                tag: tag,
+                questions: [ques]
+            })
+            data.save(function (err) {
+                if (err)
+                    console.log('Error in saving!')
+                console.log('Question saved!');
+            })
+        }
+    })
+    res.redirect('/');
 })
 
 app.listen(3000, function (err) {

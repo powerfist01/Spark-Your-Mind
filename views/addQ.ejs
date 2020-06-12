@@ -34,7 +34,6 @@
                     <h1>Welcome to the Trivia.</h1>
                 </header>
             </div>
-
             <section style="padding-top: 20px;">
                 <form method="POST" action="/addQ">
                     <div class="row gtr-uniform">
@@ -61,10 +60,10 @@
                         <div class="col-4">
                             <select name="tag" id="demo-category" required>
                                 <option value="">-- TAG REQUIRED--</option>
-                                <option value="1">DC</option>
-                                <option value="1">Marvel</option>
-                                <option value="1">Harry Potter</option>
-                                <option value="1">Friends</option>
+                                <% for(var i=0; i < tags.length; i++) { %>
+                                    <option value=<%= tags[i].tag%> ><%= tags[i].tag%></option>
+                                    <% }
+                                    %>
                             </select>
                         </div>
                     </div>

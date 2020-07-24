@@ -41,7 +41,6 @@ app.get('/',async function (req, res) {
                 resolve(doc);
         })
     })
-    //console.log(data);
     let tags = data.map(function(document){
         return document.tag;
     })

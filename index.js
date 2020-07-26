@@ -112,7 +112,7 @@ app.post('/addQ', function (req, res) {
                 console.log('Question saved!');
             })
         }
-    })
+    })   
     res.redirect('/');
 })
 

@@ -104,7 +104,7 @@ app.post('/addQ', function (req, res) {
         } else {
             var data = new qModel({
                 tag: tag,
-                questions: [ques]
+                questions: [ques]   
             })
             data.save(function (err) {
                 if (err)

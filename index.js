@@ -13,7 +13,7 @@ db.once('open', function () {
     console.log('Database Connected!!!');
 })
 db.on('error', function (err) {
-    console.log('Databse not Connected!!');
+    console.log('Databse not Connected!!');   
     throw err;
 });
 

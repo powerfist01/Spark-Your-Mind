@@ -9,7 +9,7 @@ var app = express()
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://powerfist01:love4you@ds219095.mlab.com:19095/trivia', { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
-db.once('open', function () {
+db.once('open', function () {  
     console.log('Database Connected!!!');
 })
 db.on('error', function (err) {

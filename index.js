@@ -84,38 +84,6 @@ app.get('/addQ',async function(req,res){
     res.render('addQ.ejs',{tags:data});
 })
 
-app.post('/addQ', function (req, res) {
-    console.log(req.body);
-    var tag = req.body.tag;
-    var ques = {
-        question: req.body.question,
-        answer: req.body.answer
-    }
-    qModel.find({ tag: tag }, function (err, doc) {
-        if (err)
-            console.log('Error in getting the document');
-
-        if (doc.length) {
-            qModel.updateOne({ tag: tag }, { $push: { questions: ques } },function(err){
-                if(err)
-                    throw err;
-                console.log('Question Saved!')
-            });
-        } else {
-            var data = new qModel({
-                tag: tag,
-                questions: [ques]   
-            })
-            data.save(function (err) {
-                if (err)
-                    console.log('Error in saving!')
-                console.log('Question saved!');
-            })
-        }
-    })   
-    res.redirect('/');
-})
-
 app.listen(3000, function (err) {
     if (err)
         console.log('Error in starting the server')
